@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../repositories/currency_repository.dart';
+import 'search_bar_component.dart';
 
 class CurrenciesListComponent extends StatelessWidget {
   final currenciesList = CurrencyRepository.currenciesList;
@@ -49,25 +50,7 @@ class CurrenciesListComponent extends StatelessWidget {
               top: -30,
               left: 0,
               right: 0,
-              child: Center(
-                child: Container(
-                  height: 50,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: Offset(1, 3),
-                      ),
-                    ],
-                  ),
-                  child: Center(child: Text('Crypto')),
-                ),
-              ),
+              child: SearchBarComponent(),
             ),
           ],
         ),
