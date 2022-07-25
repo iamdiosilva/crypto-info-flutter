@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/components/app_icons.dart';
 import '../../../../core/theme/app_text_styles.dart';
 
 class TileListComponent extends StatelessWidget {
@@ -14,7 +15,6 @@ class TileListComponent extends StatelessWidget {
   TileListComponent({
     Key? key,
     this.selected,
-    this.tileColor,
     required this.iconPath,
     required this.currencyName,
     required this.initials,
@@ -23,15 +23,17 @@ class TileListComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Package intl para formatação do valor da moeda
+    //Package intl to format currency
     NumberFormat real = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.linear,
         height: 65,
         decoration: BoxDecoration(
-          color: tileColor,
+          color: (selected!) ? tileColor = const Color(0xff20253D) : tileColor = Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
@@ -49,9 +51,8 @@ class TileListComponent extends StatelessWidget {
               //IconImage
               SizedBox(
                 width: 50,
-                child: Image.asset(
-                  iconPath,
-                ),
+                //
+                child: Image.asset((selected!) ? AppIcons.checkMark : iconPath),
               ),
 
               //Space between icon image and currency name
