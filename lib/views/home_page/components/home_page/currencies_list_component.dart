@@ -1,3 +1,4 @@
+import 'package:crypto_currency/views/home_page/components/home_page/tile_list_component.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../repositories/currency_repository.dart';
@@ -13,7 +14,7 @@ class CurrenciesListComponent extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color(0xff8B93B3),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -31,23 +32,23 @@ class CurrenciesListComponent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 0),
-              child: ListView.separated(
+              child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: ((context, index) {
-                  return ListTile(
-                    leading: Image.asset(currenciesList[index].iconPath),
-                    title: Text(currenciesList[index].name),
-                    trailing: Text(currenciesList[index].price.toString()),
+                  return TileListComponent(
+                    iconPath: currenciesList[index].iconPath,
+                    currencyName: currenciesList[index].name,
+                    initials: currenciesList[index].initials,
+                    price: currenciesList[index].price,
                   );
                 }),
                 padding: const EdgeInsets.all(16),
-                separatorBuilder: (_, __) => Divider(),
                 itemCount: currenciesList.length,
               ),
             ),
             //Searchbar
-            Positioned(
-              top: -30,
+            const Positioned(
+              top: -35,
               left: 0,
               right: 0,
               child: SearchBarComponent(),

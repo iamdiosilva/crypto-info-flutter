@@ -17,12 +17,12 @@ class SearchBarComponent extends StatelessWidget {
               color: Colors.black.withOpacity(0.3),
               spreadRadius: 2,
               blurRadius: 3,
-              offset: Offset(1, 3),
+              offset: const Offset(1, 3),
             ),
           ],
         ),
         child: Center(
-          child: Text('Crypto'),
+          child: Text('Search Bar'),
         ),
       ),
     );

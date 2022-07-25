@@ -23,6 +23,9 @@ class HeaderComponent extends StatelessWidget {
           ),
         ],
       ),
+      child: Center(
+        child: Text('description'),
+      ),
     );
   }
 }
