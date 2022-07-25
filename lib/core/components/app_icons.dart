@@ -1,23 +1,26 @@
-const String iconsPath = 'assets/icons/currencies/';
+const String currenciesIconsPath = 'assets/icons/currencies/';
+const String iconsPath = 'assets/icons/';
 
 class AppIcons {
-  static String bitcoin = '${iconsPath}bitcoin.png';
-  static String auroracoin = '${iconsPath}auroracoin.png';
-  static String dash = '${iconsPath}dash.png';
-  static String devcoin = '${iconsPath}devcoin.png';
-  static String dogecoin = '${iconsPath}dogecoin.png';
-  static String ethereumGreen = '${iconsPath}ethereumGreen.png';
-  static String ethereumPurple = '${iconsPath}ethereumPurple.png';
-  static String flash = '${iconsPath}flash.png';
-  static String lisk = '${iconsPath}lisk.png';
-  static String litecoin = '${iconsPath}litecoin.png';
-  static String monero = '${iconsPath}monero.png';
-  static String namecoin = '${iconsPath}namecoin.png';
-  static String nxt = '${iconsPath}nxt.png';
-  static String peercoin = '${iconsPath}peercoin.png';
-  static String primecoin = '${iconsPath}primecoin.png';
-  static String ripple = '${iconsPath}ripple.png';
-  static String steem = '${iconsPath}steem.png';
-  static String tether = '${iconsPath}tether.png';
-  static String zcash = '${iconsPath}zcash.png';
+  static String bitcoin = '${currenciesIconsPath}bitcoin.png';
+  static String auroracoin = '${currenciesIconsPath}auroracoin.png';
+  static String dash = '${currenciesIconsPath}dash.png';
+  static String devcoin = '${currenciesIconsPath}devcoin.png';
+  static String dogecoin = '${currenciesIconsPath}dogecoin.png';
+  static String ethereumGreen = '${currenciesIconsPath}ethereumGreen.png';
+  static String ethereumPurple = '${currenciesIconsPath}ethereumPurple.png';
+  static String flash = '${currenciesIconsPath}flash.png';
+  static String lisk = '${currenciesIconsPath}lisk.png';
+  static String litecoin = '${currenciesIconsPath}litecoin.png';
+  static String monero = '${currenciesIconsPath}monero.png';
+  static String namecoin = '${currenciesIconsPath}namecoin.png';
+  static String nxt = '${currenciesIconsPath}nxt.png';
+  static String peercoin = '${currenciesIconsPath}peercoin.png';
+  static String primecoin = '${currenciesIconsPath}primecoin.png';
+  static String ripple = '${currenciesIconsPath}ripple.png';
+  static String steem = '${currenciesIconsPath}steem.png';
+  static String tether = '${currenciesIconsPath}tether.png';
+  static String zcash = '${currenciesIconsPath}zcash.png';
+
+  static String checkMark = '${iconsPath}checkmark.png';
 }

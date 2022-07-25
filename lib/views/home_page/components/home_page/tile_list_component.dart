@@ -8,7 +8,18 @@ class TileListComponent extends StatelessWidget {
   final String currencyName;
   final String initials;
   final double price;
-  const TileListComponent({Key? key, required this.iconPath, required this.currencyName, required this.initials, required this.price}) : super(key: key);
+  Color? tileColor;
+  bool? selected = false;
+
+  TileListComponent({
+    Key? key,
+    this.selected,
+    this.tileColor,
+    required this.iconPath,
+    required this.currencyName,
+    required this.initials,
+    required this.price,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +31,7 @@ class TileListComponent extends StatelessWidget {
       child: Container(
         height: 65,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: tileColor,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
@@ -38,7 +49,9 @@ class TileListComponent extends StatelessWidget {
               //IconImage
               SizedBox(
                 width: 50,
-                child: Image.asset(iconPath),
+                child: Image.asset(
+                  iconPath,
+                ),
               ),
 
               //Space between icon image and currency name
@@ -55,7 +68,7 @@ class TileListComponent extends StatelessWidget {
                       //CurrencyName
                       child: Text(
                         currencyName,
-                        style: AppTextStyles.currencyName(),
+                        style: (selected!) ? AppTextStyles.selectedCurrencyName() : AppTextStyles.unselectedCurrencyName(),
                       ),
                     ),
                     Align(
@@ -64,7 +77,7 @@ class TileListComponent extends StatelessWidget {
                       //Initials
                       child: Text(
                         '($initials)',
-                        style: AppTextStyles.currencyInitials(),
+                        style: (selected!) ? AppTextStyles.selectedCurrencyInitials() : AppTextStyles.unselectedCurrencyInitials(),
                       ),
                     ),
                   ],
@@ -75,7 +88,10 @@ class TileListComponent extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: Text(real.format(price)),
+                  child: Text(
+                    real.format(price),
+                    style: (selected!) ? AppTextStyles.selectedCurrencyName() : AppTextStyles.unselectedCurrencyName(),
+                  ),
                 ),
               ),
             ],

@@ -10,7 +10,7 @@ class SearchBarComponent extends StatelessWidget {
         height: 50,
         width: 300,
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Color(0xff68D69D),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(

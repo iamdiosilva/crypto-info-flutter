@@ -1,3 +1,4 @@
+import 'package:crypto_currency/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HeaderComponent extends StatelessWidget {
@@ -9,7 +10,7 @@ class HeaderComponent extends StatelessWidget {
       height: 100,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: const Color(0xff8B93B3),
+        color: const Color(0xff20253D),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
@@ -24,7 +25,10 @@ class HeaderComponent extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: Text('description'),
+        child: Text(
+          'description',
+          style: AppTextStyles.selectedCurrencyName(),
+        ),
       ),
     );
   }
