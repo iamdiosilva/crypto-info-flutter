@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/app_icons.dart';
 import '../../../../models/currency.dart';
 import '../../../../repositories/currency_repository.dart';
 import 'search_bar_component.dart';
 import 'tile_list_component.dart';
 
 class CurrenciesListComponent extends StatefulWidget {
-  CurrenciesListComponent({Key? key}) : super(key: key);
+  const CurrenciesListComponent({Key? key}) : super(key: key);
 
   @override
   State<CurrenciesListComponent> createState() => _CurrenciesListComponentState();
@@ -54,17 +53,13 @@ class _CurrenciesListComponentState extends State<CurrenciesListComponent> {
                       });
                     },
                     child: TileListComponent(
-                      iconPath: (selectedCurrency.contains(CurrencyRepository.currenciesList[index]))
-                          ? AppIcons.checkMark
-                          : CurrencyRepository.currenciesList[index].iconPath,
+                      iconPath: CurrencyRepository.currenciesList[index].iconPath,
                       currencyName: CurrencyRepository.currenciesList[index].name,
                       initials: CurrencyRepository.currenciesList[index].initials,
                       price: CurrencyRepository.currenciesList[index].price,
 
-                      //recebe verdaeiro ou falso caso esteja selecionado ou nao
+                      //receive true or false if is selected
                       selected: (selectedCurrency.contains(CurrencyRepository.currenciesList[index])),
-
-                      tileColor: (selectedCurrency.contains(CurrencyRepository.currenciesList[index])) ? selectedColor : unselectedColor,
                     ),
                   );
                 }),
