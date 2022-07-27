@@ -1,4 +1,3 @@
-import 'package:crypto_currency/views/home_page/components/home_page/header_component.dart';
 import 'package:flutter/material.dart';
 
 import 'components/home_page/currencies_information_list.dart';

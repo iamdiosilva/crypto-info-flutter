@@ -1,9 +1,8 @@
-import 'package:crypto_currency/views/home_page/components/home_page/card_selected_list_component.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/components/app_icons.dart';
-import '../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/components/app_icons.dart';
+import '../../../../../core/theme/app_text_styles.dart';
 
 class TileListComponent extends StatelessWidget {
   final String iconPath;

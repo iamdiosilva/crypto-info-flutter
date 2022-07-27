@@ -1,11 +1,13 @@
-import 'package:crypto_currency/views/home_page/components/home_page/header_component.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/currency.dart';
 import '../../../../repositories/currency_repository.dart';
-import 'card_selected_list_component.dart';
-import 'search_bar_component.dart';
-import 'tile_list_component.dart';
+
+import 'currencies_information/card_selected_list_component.dart';
+import 'currencies_information/favorite_button_component.dart';
+import 'currencies_information/header_component.dart';
+import 'currencies_information/search_bar_component.dart';
+import 'currencies_information/tile_list_component.dart';
 
 class CurrenciesInformationList extends StatefulWidget {
   const CurrenciesInformationList({Key? key}) : super(key: key);
@@ -108,6 +110,11 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                 ),
               ),
             ),
+            Positioned(
+              bottom: 20,
+              right: 20,
+              child: (selectedList.isNotEmpty) ? const FavoriteButtonComponent() : const SizedBox(),
+            )
           ],
         ),
       ],

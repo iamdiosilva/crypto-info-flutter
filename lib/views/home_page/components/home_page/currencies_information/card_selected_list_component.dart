@@ -2,11 +2,10 @@ import 'package:crypto_currency/core/components/app_icons.dart';
 import 'package:crypto_currency/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/currency.dart';
-
 class CardSelectedListComponent extends StatelessWidget {
   double? maxWidth;
-  final double? maxHeight = 50;
+  //final double? maxHeight = 50;
+  double? maxHeight;
   final double? minWidth = 20;
   final double? minHeight = 20;
   Function()? action;
@@ -21,12 +20,13 @@ class CardSelectedListComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    maxWidth = size.width * .20;
+    maxWidth = size.width * .15;
+    maxHeight = 50;
     return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.bounceOut,
       decoration: BoxDecoration(
-        color: const Color(0xff68D69D),
+        color: (expand!) ? const Color(0xff68D69D) : const Color(0xff20253D),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
