@@ -1,3 +1,4 @@
+import 'package:crypto_currency/views/home_page/components/home_page/card_selected_list_component.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -51,7 +52,6 @@ class TileListComponent extends StatelessWidget {
               //IconImage
               SizedBox(
                 width: 50,
-                //
                 child: Image.asset((selected!) ? AppIcons.checkMark : iconPath),
               ),
 

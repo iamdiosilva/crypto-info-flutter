@@ -6,13 +6,13 @@ class HeaderComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: 100,
+      height: size.height * .15,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: const Color(0xff20253D),
         borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
         boxShadow: [

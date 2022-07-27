@@ -23,4 +23,5 @@ class AppIcons {
   static String zcash = '${currenciesIconsPath}zcash.png';
 
   static String checkMark = '${iconsPath}checkmark.png';
+  static String removerX = '${iconsPath}remover.png';
 }

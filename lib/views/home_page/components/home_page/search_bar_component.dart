@@ -5,13 +5,16 @@ class SearchBarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    Size size = MediaQuery.of(context).size;
+
+    return Align(
+      alignment: Alignment.centerLeft,
       child: Container(
         height: 50,
-        width: 300,
+        width: size.width * .7,
         decoration: BoxDecoration(
           color: Color(0xff68D69D),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(15), topRight: Radius.circular(15)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
