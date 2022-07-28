@@ -1,3 +1,4 @@
+import 'package:crypto_currency/views/currency_detail/currency_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/currency.dart';
@@ -5,7 +6,6 @@ import '../../../../repositories/currency_repository.dart';
 
 import 'currencies_information/card_selected_list_component.dart';
 import 'currencies_information/favorite_button_component.dart';
-import 'currencies_information/header_component.dart';
 import 'currencies_information/search_bar_component.dart';
 import 'currencies_information/tile_list_component.dart';
 
@@ -23,22 +23,6 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
   Color selectedColor = const Color(0xff20253D);
   Color unselectedColor = Colors.white;
 
-  _selection(int index) {
-    setState(() {
-      (selectedList.contains(CurrencyRepository.currenciesList[index]))
-          ? selectedList.remove(CurrencyRepository.currenciesList[index])
-          : selectedList.add(CurrencyRepository.currenciesList[index]);
-      debugPrint('selection');
-    });
-  }
-
-  _cancelSelection() {
-    setState(() {
-      selectedList.clear();
-      debugPrint('cancelou');
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -52,7 +36,6 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
               height: size.height,
               color: Color(0xff6A6D7D),
             ),
-            HeaderComponent(),
 
             //Container ListBuilder
             Positioned(
@@ -62,7 +45,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
               child: Center(
                 child: Container(
                   width: size.width,
-                  height: size.height * .825,
+                  height: size.height * .935,
                   decoration: const BoxDecoration(
                     color: Color(0xffCDD2DE),
                     borderRadius: BorderRadius.only(
@@ -78,6 +61,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                         onLongPress: (() {
                           _selection(index);
                         }),
+                        onTap: () => _showCurrencyDetails(currencyList[index]),
                         child: TileListComponent(
                           iconPath: currencyList[index].iconPath,
                           currencyName: currencyList[index].name,
@@ -94,14 +78,14 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
 
             //Searchbar
             Positioned(
-              top: size.height * 0.120,
+              top: size.height * 0.01,
               left: 0,
               child: SearchBarComponent(),
             ),
 
             //Card Selection
             Positioned(
-              top: size.height * 0.120,
+              top: size.height * 0.01,
               right: size.width * 0.04,
               child: Center(
                 child: CardSelectedListComponent(
@@ -118,6 +102,29 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
           ],
         ),
       ],
+    );
+  }
+
+  _selection(int index) {
+    setState(() {
+      (selectedList.contains(CurrencyRepository.currenciesList[index]))
+          ? selectedList.remove(CurrencyRepository.currenciesList[index])
+          : selectedList.add(CurrencyRepository.currenciesList[index]);
+    });
+  }
+
+  _cancelSelection() {
+    setState(() {
+      selectedList.clear();
+    });
+  }
+
+  _showCurrencyDetails(Currency currency) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CurrencyDetailsPage(currency: currency),
+      ),
     );
   }
 }
