@@ -9,6 +9,7 @@ class FavoriteButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: FloatingActionButton.extended(
+        heroTag: 'btnFavorite',
         onPressed: () {},
         backgroundColor: const Color(0xff68D69D),
         icon: Icon(

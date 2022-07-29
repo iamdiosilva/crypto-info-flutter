@@ -2,10 +2,10 @@ import 'package:crypto_currency/core/components/app_icons.dart';
 import 'package:crypto_currency/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class HeaderComponent extends StatelessWidget {
+class CurrencyHeaderComponent extends StatelessWidget {
   final String title;
   final String iconPath;
-  const HeaderComponent({Key? key, required this.title, required this.iconPath}) : super(key: key);
+  const CurrencyHeaderComponent({Key? key, required this.title, required this.iconPath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
