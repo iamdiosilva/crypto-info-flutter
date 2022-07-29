@@ -37,20 +37,11 @@ class HeaderComponent extends StatelessWidget {
             enableFeedback: true,
             icon: Image.asset(AppIcons.arrowBack),
           ),
-          Row(
-            children: [
-              Text(
-                title,
-                style: AppTextStyles.detailCurrencyName(),
-              ),
-              const SizedBox(width: 20),
-              SizedBox(
-                width: 60,
-                child: Image.asset(iconPath),
-              ),
-            ],
+          Text(
+            title,
+            style: AppTextStyles.detailCurrencyName(),
           ),
-          const SizedBox(),
+          SizedBox(width: 50),
         ],
       ),
     );
