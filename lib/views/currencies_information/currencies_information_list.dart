@@ -1,13 +1,14 @@
-import 'package:crypto_currency/views/_general_components/general_header_component.dart';
-import 'package:crypto_currency/views/currency_detail/currency_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/currency.dart';
 import '../../repositories/currency_repository.dart';
+import '../../repositories/favorites_repository.dart';
+import '../_general_components/general_header_component.dart';
+import '../currency_detail/currency_detail_page.dart';
 import 'components/cancel_floating_button.dart';
 import 'components/favorite_button_component.dart';
-import 'components/search_bar_component.dart';
-import 'components/tile_list_component.dart';
+import '../_general_components/tile_list_component.dart';
 
 class CurrenciesInformationList extends StatefulWidget {
   const CurrenciesInformationList({Key? key}) : super(key: key);
@@ -19,28 +20,27 @@ class CurrenciesInformationList extends StatefulWidget {
 class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
   List<Currency> currencyList = CurrencyRepository.currenciesList;
   List<Currency> selectedList = [];
+  var favoritesRepository = FavoritesRepository();
 
   Color selectedColor = const Color(0xff20253D);
   Color unselectedColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    favoritesRepository = Provider.of<FavoritesRepository>(context);
+    favoritesRepository = context.watch<FavoritesRepository>();
 
     return Column(
       children: [
-        Container(
-          clipBehavior: Clip.none,
-          child: GeneralHeaderComponent(title: 'Currencies'),
-        ),
+        const GeneralHeaderComponent(title: 'Currencies'),
         Expanded(
           child: Stack(
             children: [
               Positioned(
                 child: Container(
-                  color: Color(0xffCDD2DE),
+                  color: const Color(0xffCDD2DE),
                   child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: currencyList.length,
                     itemBuilder: (context, index) => GestureDetector(
                       onLongPress: (() {
@@ -48,11 +48,9 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                       }),
                       onTap: () => _showCurrencyDetails(currencyList[index]),
                       child: TileListComponent(
-                        iconPath: currencyList[index].iconPath,
-                        currencyName: currencyList[index].name,
-                        initials: currencyList[index].initials,
-                        price: currencyList[index].price,
+                        currency: currencyList[index],
                         selected: selectedList.contains(currencyList[index]),
+                        favorite: favoritesRepository.favoriteList.contains(currencyList[index]),
                       ),
                     ),
                   ),
@@ -69,7 +67,13 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
               Positioned(
                 bottom: 20,
                 right: 20,
-                child: FavoriteButtonComponent(),
+                child: FavoriteButtonComponent(
+                  selected: selectedList.isNotEmpty,
+                  action: () {
+                    favoritesRepository.saveAll(selectedList);
+                    _cancelSelection();
+                  },
+                ),
               )
             ],
           ),
@@ -95,9 +99,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
   _showCurrencyDetails(Currency currency) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (_) => CurrencyDetailsPage(currency: currency),
-      ),
+      MaterialPageRoute(builder: (_) => CurrencyDetailsPage(currency: currency)),
     );
   }
 }

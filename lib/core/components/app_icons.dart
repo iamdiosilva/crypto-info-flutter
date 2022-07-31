@@ -25,4 +25,7 @@ class AppIcons {
   static String checkMark = '${iconsPath}checkmark.png';
   static String removerX = '${iconsPath}remover.png';
   static String arrowBack = '${iconsPath}arrowBack.png';
+  static String star = '${iconsPath}star.png';
+  static String moreVertical = '${iconsPath}moreVertical.png';
+  static String trash = '${iconsPath}trash.png';
 }

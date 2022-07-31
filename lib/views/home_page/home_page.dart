@@ -1,5 +1,3 @@
-import 'package:crypto_currency/views/_general_components/general_header_component.dart';
-import 'package:crypto_currency/views/currencies_information/components/cancel_floating_button.dart';
 import 'package:flutter/material.dart';
 
 import '../currencies_information/currencies_information_list.dart';
