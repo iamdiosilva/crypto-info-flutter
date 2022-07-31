@@ -4,12 +4,18 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'app.dart';
+import 'core/configs/app_settings.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => FavoritesRepository(),
-    child: const App(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => FavoritesRepository()),
+        ChangeNotifierProvider(create: (context) => AppSettings()),
+      ],
+      child: const App(),
+    ),
+  );
 
   //Deixa o APP FullScreen Imersivo
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);

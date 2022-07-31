@@ -1,10 +1,11 @@
+import 'package:crypto_currency/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/currency.dart';
 import '../../repositories/favorites_repository.dart';
 import '../_general_components/general_header_component.dart';
-import '../currency_detail/currency_detail_page.dart';
+import '../currency_detail_page/currency_detail_page.dart';
 import 'components/tile_list_favorite_component.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -20,8 +21,13 @@ class _FavoritePageState extends State<FavoritePage> {
     return Scaffold(
       body: Column(
         children: [
-          const GeneralHeaderComponent(
+          GeneralHeaderComponent(
             title: 'Favorites',
+            btnLocale: Container(
+              width: 50,
+              height: 50,
+              color: Colors.red,
+            ),
           ),
           Expanded(
             child: Stack(
@@ -37,10 +43,16 @@ class _FavoritePageState extends State<FavoritePage> {
                                 child: Center(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Icon(Icons.star),
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.grey,
+                                      ),
                                       SizedBox(width: 10),
-                                      Text('There are no coins in the favorites list yet.'),
+                                      Text(
+                                        'There are no coins in the favorites list yet.',
+                                        style: AppTextStyles.unselectedCurrencyInitials().copyWith(fontSize: 16),
+                                      ),
                                     ],
                                   ),
                                 ),

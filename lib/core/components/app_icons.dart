@@ -28,4 +28,5 @@ class AppIcons {
   static String star = '${iconsPath}star.png';
   static String moreVertical = '${iconsPath}moreVertical.png';
   static String trash = '${iconsPath}trash.png';
+  static String locationUpdate = '${iconsPath}locationUpdate.png';
 }

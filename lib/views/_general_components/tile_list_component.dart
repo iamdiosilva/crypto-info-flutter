@@ -10,19 +10,17 @@ class TileListComponent extends StatelessWidget {
   Color? tileColor;
   bool? selected = false;
   bool? favorite = false;
-
+  NumberFormat? locale;
   TileListComponent({
     Key? key,
     this.selected,
     this.favorite,
+    required this.locale,
     required this.currency,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Package intl to format currency
-    NumberFormat real = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AnimatedContainer(
@@ -103,7 +101,7 @@ class TileListComponent extends StatelessWidget {
                     ),
                     Positioned(
                       child: Text(
-                        real.format(currency.price),
+                        locale!.format(currency.price),
                         style: (selected == null)
                             ? AppTextStyles.unselectedCurrencyName()
                             : (selected!)

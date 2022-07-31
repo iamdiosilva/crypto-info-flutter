@@ -1,11 +1,15 @@
+import 'package:crypto_currency/core/components/app_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/configs/app_settings.dart';
 import '../../models/currency.dart';
 import '../../repositories/currency_repository.dart';
 import '../../repositories/favorites_repository.dart';
 import '../_general_components/general_header_component.dart';
-import '../currency_detail/currency_detail_page.dart';
+
+import '../currency_detail_page/currency_detail_page.dart';
 import 'components/cancel_floating_button.dart';
 import 'components/favorite_button_component.dart';
 import '../_general_components/tile_list_component.dart';
@@ -25,14 +29,50 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
   Color selectedColor = const Color(0xff20253D);
   Color unselectedColor = Colors.white;
 
+  late NumberFormat format;
+  late Map<String, String> loc;
+
+  readNumberFormat() {
+    loc = context.watch<AppSettings>().locale;
+    format = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+  }
+
+  changeCurrencyLocale() {
+    final locale = loc['locale'] == 'pt_BR' ? 'en_US' : 'pt_BR';
+    final name = loc['locale'] == 'pt_BR' ? '\$' : 'R\$';
+
+    return PopupMenuButton(
+      color: Color(0xffCDD2DE),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      icon: Image.asset(AppIcons.locationUpdate),
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          child: ListTile(
+            leading: Icon(Icons.swap_horiz),
+            title: Text('Usar $locale'),
+            onTap: () {
+              context.read<AppSettings>().setLocale(locale, name);
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     favoritesRepository = Provider.of<FavoritesRepository>(context);
     favoritesRepository = context.watch<FavoritesRepository>();
 
+    readNumberFormat();
+
     return Column(
       children: [
-        const GeneralHeaderComponent(title: 'Currencies'),
+        GeneralHeaderComponent(
+          title: 'Currencies',
+          btnLocale: changeCurrencyLocale(),
+        ),
         Expanded(
           child: Stack(
             children: [
@@ -51,6 +91,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                         currency: currencyList[index],
                         selected: selectedList.contains(currencyList[index]),
                         favorite: favoritesRepository.favoriteList.contains(currencyList[index]),
+                        locale: format,
                       ),
                     ),
                   ),

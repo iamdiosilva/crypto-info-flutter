@@ -135,10 +135,7 @@ class TileListFavoriteComponent extends StatelessWidget {
                 itemBuilder: (context) => [
                   PopupMenuItem(
                     child: ListTile(
-                      title: Text(
-                        'Remover dos Favoritos',
-                        style: AppTextStyles.popmenuItem(),
-                      ),
+                      title: Text('Remove from Favorites', style: AppTextStyles.popmenuItem()),
                       trailing: SizedBox(
                         width: 35,
                         child: Image.asset(AppIcons.trash),

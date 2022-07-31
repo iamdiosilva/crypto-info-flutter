@@ -1,10 +1,10 @@
-import 'package:crypto_currency/core/theme/app_text_styles.dart';
-import 'package:crypto_currency/views/currency_detail/components/currency_header_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/theme/app_text_styles.dart';
 import '../../models/currency.dart';
+import 'components/currency_header_component.dart';
 
 class CurrencyDetailsPage extends StatefulWidget {
   Currency currency;
