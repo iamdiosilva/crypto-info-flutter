@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class GeneralHeaderComponent extends StatelessWidget {
   final String title;
-  final Widget btnLocale;
-  const GeneralHeaderComponent({Key? key, required this.title, required this.btnLocale}) : super(key: key);
+  final Widget? btnLocale;
+  const GeneralHeaderComponent({Key? key, required this.title, this.btnLocale}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class GeneralHeaderComponent extends StatelessWidget {
           right: 0,
           bottom: 0,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: btnLocale,
           ),
         ),

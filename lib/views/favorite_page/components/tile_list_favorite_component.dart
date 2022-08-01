@@ -9,6 +9,7 @@ import '../../../models/currency.dart';
 
 class TileListFavoriteComponent extends StatelessWidget {
   final Currency currency;
+  NumberFormat? locale;
   Color? tileColor;
   bool? selected = false;
   bool? favorite = false;
@@ -17,13 +18,13 @@ class TileListFavoriteComponent extends StatelessWidget {
     Key? key,
     this.selected,
     this.favorite,
+    this.locale,
     required this.currency,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //Package intl to format currency
-    NumberFormat real = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -105,7 +106,7 @@ class TileListFavoriteComponent extends StatelessWidget {
                     ),
                     Positioned(
                       child: Text(
-                        real.format(currency.price),
+                        locale!.format(currency.price),
                         style: (selected == null)
                             ? AppTextStyles.unselectedCurrencyName()
                             : (selected!)

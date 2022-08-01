@@ -1,4 +1,5 @@
 import 'package:crypto_currency/core/theme/app_text_styles.dart';
+import 'package:crypto_currency/repositories/currency_format_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,11 +24,6 @@ class _FavoritePageState extends State<FavoritePage> {
         children: [
           GeneralHeaderComponent(
             title: 'Favorites',
-            btnLocale: Container(
-              width: 50,
-              height: 50,
-              color: Colors.red,
-            ),
           ),
           Expanded(
             child: Stack(
@@ -61,7 +57,10 @@ class _FavoritePageState extends State<FavoritePage> {
                                 itemCount: favoritas.favoriteList.length,
                                 itemBuilder: (context, index) => InkWell(
                                   onTap: () => _showCurrencyDetails(favoritas.favoriteList[index]),
-                                  child: TileListFavoriteComponent(currency: favoritas.favoriteList[index]),
+                                  child: TileListFavoriteComponent(
+                                    currency: favoritas.favoriteList[index],
+                                    locale: CurrencyFormatRepository.format,
+                                  ),
                                 ),
                               );
                       },

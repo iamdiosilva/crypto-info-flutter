@@ -1,4 +1,5 @@
 import 'package:crypto_currency/core/components/app_icons.dart';
+import 'package:crypto_currency/repositories/currency_format_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -29,19 +30,20 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
   Color selectedColor = const Color(0xff20253D);
   Color unselectedColor = Colors.white;
 
-  late NumberFormat format;
   late Map<String, String> loc;
 
   readNumberFormat() {
     loc = context.watch<AppSettings>().locale;
-    format = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+    CurrencyFormatRepository.format = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
   }
 
+  //Change Currency Locale
   changeCurrencyLocale() {
     final locale = loc['locale'] == 'pt_BR' ? 'en_US' : 'pt_BR';
     final name = loc['locale'] == 'pt_BR' ? '\$' : 'R\$';
 
     return PopupMenuButton(
+      tooltip: 'Change Currency Format',
       color: Color(0xffCDD2DE),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       icon: Image.asset(AppIcons.locationUpdate),
@@ -90,8 +92,8 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                       child: TileListComponent(
                         currency: currencyList[index],
                         selected: selectedList.contains(currencyList[index]),
-                        favorite: favoritesRepository.favoriteList.contains(currencyList[index]),
-                        locale: format,
+                        favorite: favoritesRepository.favoriteList.any((fav) => fav.initials == currencyList[index].initials),
+                        locale: CurrencyFormatRepository.format,
                       ),
                     ),
                   ),
