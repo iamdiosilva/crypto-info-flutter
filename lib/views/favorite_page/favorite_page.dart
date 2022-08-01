@@ -54,6 +54,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                 ),
                               )
                             : ListView.builder(
+                                physics: BouncingScrollPhysics(),
                                 itemCount: favoritas.favoriteList.length,
                                 itemBuilder: (context, index) => InkWell(
                                   onTap: () => _showCurrencyDetails(favoritas.favoriteList[index]),

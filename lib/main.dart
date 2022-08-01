@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'app.dart';
 import 'core/configs/app_settings.dart';
 import 'core/configs/hive_config.dart';
+import 'repositories/account_repository.dart';
 import 'repositories/favorites_repository.dart';
 
 void main() async {
@@ -13,6 +14,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => AccountRepository()),
         ChangeNotifierProvider(create: (context) => FavoritesRepository()),
         ChangeNotifierProvider(create: (context) => AppSettings()),
       ],

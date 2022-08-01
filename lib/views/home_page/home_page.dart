@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../account_page/account_page.dart';
 import '../currencies_information/currencies_information_list.dart';
 import '../favorite_page/favorite_page.dart';
 
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           CurrenciesInformationList(),
           FavoritePage(),
+          AccountPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -48,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Todas'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorites'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),
     );
