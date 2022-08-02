@@ -11,4 +11,5 @@ class AppTextStyles {
   static TextStyle buyForm() => TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[800]);
   static TextStyle currencylabelAmount() => const TextStyle(fontSize: 20, color: Color(0xff20253D), fontWeight: FontWeight.w500);
   static TextStyle popmenuItem() => const TextStyle(fontSize: 15, color: Color(0xff20253D), fontWeight: FontWeight.w500);
+  static TextStyle balanceAccount() => const TextStyle(fontSize: 25, color: Color(0xff20253D));
 }

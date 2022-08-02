@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../account_page/account_page.dart';
 import '../currencies_information/currencies_information_list.dart';
 import '../favorite_page/favorite_page.dart';
+import '../wallet_page/wallet_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,10 +37,12 @@ class _HomePageState extends State<HomePage> {
         children: [
           CurrenciesInformationList(),
           FavoritePage(),
+          WalletPage(),
           AccountPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Color(0xff20253D),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey[700],
@@ -50,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Todas'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorites'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'Wallet'),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),

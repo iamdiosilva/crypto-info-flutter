@@ -113,10 +113,10 @@ class TileListComponent extends StatelessWidget {
                         ? (const SizedBox())
                         : (favorite!)
                             ? Positioned(
-                                bottom: -12,
+                                bottom: -10,
                                 right: 0,
                                 child: SizedBox(
-                                  width: 35,
+                                  width: 25,
                                   child: Image.asset(AppIcons.star),
                                 ),
                               )

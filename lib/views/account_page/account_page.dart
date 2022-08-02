@@ -1,3 +1,4 @@
+import 'package:crypto_currency/core/theme/app_text_styles.dart';
 import 'package:crypto_currency/repositories/account_repository.dart';
 import 'package:crypto_currency/repositories/currency_format_repository.dart';
 import 'package:crypto_currency/views/_general_components/general_header_component.dart';
@@ -48,11 +49,11 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       child: ListTile(
                         title: Text(
-                          'Saldo',
+                          'Balance',
                         ),
                         subtitle: Text(
                           CurrencyFormatRepository.format.format(account.balance),
-                          style: TextStyle(fontSize: 25, color: Color(0xff20253D)),
+                          style: AppTextStyles.balanceAccount(),
                         ),
                         trailing: IconButton(
                           icon: Icon(Icons.edit),
