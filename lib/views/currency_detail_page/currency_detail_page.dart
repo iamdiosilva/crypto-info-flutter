@@ -1,3 +1,4 @@
+import 'package:crypto_currency/repositories/currency_format_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +17,6 @@ class CurrencyDetailsPage extends StatefulWidget {
 }
 
 class _CurrencyDetailsPageState extends State<CurrencyDetailsPage> {
-  NumberFormat real = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
   final _form = GlobalKey<FormState>();
   final _value = TextEditingController();
   double amount = 0;
@@ -53,11 +53,11 @@ class _CurrencyDetailsPageState extends State<CurrencyDetailsPage> {
                 children: [
                   SizedBox(
                     width: 45,
-                    child: Image.asset(widget.currency.iconPath),
+                    child: Image.network(widget.currency.iconPath),
                   ),
                   SizedBox(width: 15),
                   Text(
-                    real.format(widget.currency.price),
+                    CurrencyFormatRepository.format.format(widget.currency.price),
                     style: AppTextStyles.detailCurrencyPrice(),
                   )
                 ],

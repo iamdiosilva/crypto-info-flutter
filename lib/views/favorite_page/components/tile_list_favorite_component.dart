@@ -55,7 +55,7 @@ class TileListFavoriteComponent extends StatelessWidget {
               //IconImage
               SizedBox(
                 width: 50,
-                child: (selected == null) ? Image.asset(currency.iconPath) : Image.asset((selected!) ? AppIcons.checkMark : currency.iconPath),
+                child: (selected == null) ? Image.network(currency.iconPath) : Image.asset((selected!) ? AppIcons.checkMark : currency.iconPath),
               ),
 
               //Space between icon image and currency name

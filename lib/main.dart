@@ -1,3 +1,4 @@
+import 'package:crypto_currency/repositories/currency_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AccountRepository()),
         ChangeNotifierProvider(create: (context) => FavoritesRepository()),
         ChangeNotifierProvider(create: (context) => AppSettings()),
+        ChangeNotifierProvider(create: (context) => CurrencyRepository()),
       ],
       child: const App(),
     ),

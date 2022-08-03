@@ -1,3 +1,4 @@
+import 'package:crypto_currency/repositories/currency_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -9,6 +10,8 @@ class AccountRepository extends ChangeNotifier {
 
   List<Position> _wallet = [];
   double _balance = 0;
+
+  //CurrencyRepository currencies;
 
   get balance => _balance;
   List<Position> get wallet => _wallet;

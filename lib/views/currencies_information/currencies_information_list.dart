@@ -23,9 +23,12 @@ class CurrenciesInformationList extends StatefulWidget {
 }
 
 class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
-  List<Currency> currencyList = CurrencyRepository.currenciesList;
+  late List<Currency> table;
   List<Currency> selectedList = [];
-  var favoritesRepository = FavoritesRepository();
+
+  late CurrencyRepository currencies;
+
+  //var favoritesRepository = FavoritesRepository();
 
   Color selectedColor = const Color(0xff20253D);
   Color unselectedColor = Colors.white;
@@ -64,8 +67,9 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
 
   @override
   Widget build(BuildContext context) {
-    favoritesRepository = Provider.of<FavoritesRepository>(context);
-    favoritesRepository = context.watch<FavoritesRepository>();
+    //favoritesRepository = context.watch<FavoritesRepository>();
+    currencies = context.watch<CurrencyRepository>();
+    table = currencies.table;
 
     readNumberFormat();
 
@@ -83,16 +87,16 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                   color: const Color(0xffCDD2DE),
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: currencyList.length,
+                    itemCount: table.length,
                     itemBuilder: (context, index) => GestureDetector(
                       onLongPress: (() {
                         _selection(index);
                       }),
-                      onTap: () => _showCurrencyDetails(currencyList[index]),
+                      onTap: () => _showCurrencyDetails(table[index]),
                       child: TileListComponent(
-                        currency: currencyList[index],
-                        selected: selectedList.contains(currencyList[index]),
-                        favorite: favoritesRepository.favoriteList.any((fav) => fav.initials == currencyList[index].initials),
+                        currency: table[index],
+                        selected: selectedList.contains(table[index]),
+                        //favorite: favoritesRepository.favoriteList.any((fav) => fav.initials == table[index].initials),
                         locale: CurrencyFormatRepository.format,
                       ),
                     ),
@@ -113,7 +117,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
                 child: FavoriteButtonComponent(
                   selected: selectedList.isNotEmpty,
                   action: () {
-                    favoritesRepository.saveAll(selectedList);
+                    //favoritesRepository.saveAll(selectedList);
                     _cancelSelection();
                   },
                 ),
@@ -127,9 +131,7 @@ class _CurrenciesInformationListState extends State<CurrenciesInformationList> {
 
   _selection(int index) {
     setState(() {
-      (selectedList.contains(CurrencyRepository.currenciesList[index]))
-          ? selectedList.remove(CurrencyRepository.currenciesList[index])
-          : selectedList.add(CurrencyRepository.currenciesList[index]);
+      (selectedList.contains(table[index])) ? selectedList.remove(table[index]) : selectedList.add(table[index]);
     });
   }
 

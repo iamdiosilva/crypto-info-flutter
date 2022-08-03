@@ -2,7 +2,6 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../core/configs/adapters/currency_hive_adapters.dart';
 import '../models/currency.dart';
 
 class FavoritesRepository extends ChangeNotifier {
@@ -22,7 +21,7 @@ class FavoritesRepository extends ChangeNotifier {
   _openBox() async {
     //verify if doesnt exist that typeId
     if (!Hive.isAdapterRegistered(0)) {
-      Hive.registerAdapter(CurrencyHiveAdapter());
+      //Hive.registerAdapter(CurrencyHiveAdapter());
     }
     box = await Hive.openLazyBox<Currency>('favorite_currencies');
   }
